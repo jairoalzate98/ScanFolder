@@ -19,18 +19,25 @@ public class Tree {
 			String name = files[i].getPath();
 			if (!files[i].isDirectory()) {
 				String extention = name.substring(name.lastIndexOf("."), name.length());
+				String nameFinal = getNameFinal(name);
 				if (root.searchExtention(extention)) {
 					Node a = root.getNodeByExtention(extention);
-					a.addNode(Node.createNode(name, true, a));
+					a.addNode(Node.createNode(nameFinal, true, a));
 				}else{
 					root.addNode(Node.createNode(extention, false, root));
 					Node a = root.getNodeByExtention(extention);
-					a.addNode(Node.createNode(name, true, a));
+					a.addNode(Node.createNode(nameFinal, true, a));
 				}
 			}else{
 				File[] values = files[i].listFiles();
 				addChildTree(values);
 			}
 		}
+	}
+	
+	public String getNameFinal(String name){
+		String fi = name.substring(0, name.lastIndexOf("."));
+		fi = fi.substring(fi.lastIndexOf("\\") + 1, fi.length());
+		return fi;
 	}
 }
