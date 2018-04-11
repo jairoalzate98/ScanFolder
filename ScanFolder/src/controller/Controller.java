@@ -36,5 +36,7 @@ public class Controller implements ActionListener{
 			System.out.println(e.getMessage());
 		}
 		mainWindow.paintTree(tree.getRoot());
+		mainWindow.revalidate();
+		mainWindow.repaint();
 	}
 }

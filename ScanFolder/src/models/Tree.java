@@ -20,14 +20,16 @@ public class Tree {
 			if (!files[i].isDirectory()) {
 				String extention = name.substring(name.lastIndexOf("."), name.length());
 				if (root.searchExtention(extention)) {
-					
+					Node a = root.getNodeByExtention(extention);
+					a.addNode(Node.createNode(name, true, a));
 				}else{
 					root.addNode(Node.createNode(extention, false, root));
 					Node a = root.getNodeByExtention(extention);
 					a.addNode(Node.createNode(name, true, a));
 				}
 			}else{
-				root.addNode(Node.createNode(name, false, root));
+				File[] values = files[i].listFiles();
+				addChildTree(values);
 			}
 		}
 	}
