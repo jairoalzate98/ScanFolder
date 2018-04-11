@@ -14,10 +14,11 @@ public class Tree {
 		root = new Node(information, false, null);
 	}
 	
-	public void addChildTree(File[] files){
+	public void addChildTree(File[] files, double sizeOfFiltler){
 		for (int i = 0; i < files.length; i++) {
 			String name = files[i].getPath();
 			if (!files[i].isDirectory()) {
+				getSizeOfFile(files[i]);
 				String extention = name.substring(name.lastIndexOf("."), name.length());
 				String nameFinal = getNameFinal(name);
 				if (root.searchExtention(extention)) {
@@ -30,9 +31,15 @@ public class Tree {
 				}
 			}else{
 				File[] values = files[i].listFiles();
-				addChildTree(values);
+				addChildTree(values, sizeOfFiltler);
 			}
 		}
+	}
+
+	private double getSizeOfFile(File file) {
+		double bytes = file.length();
+		double kilobytes = (bytes / 1024);
+		return kilobytes;
 	}
 	
 	public String getNameFinal(String name){
