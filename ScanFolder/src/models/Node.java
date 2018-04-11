@@ -8,16 +8,18 @@ public class Node {
 	private ArrayList<Node> nodeList;
 	private boolean isLeaf;
 	private Node fatherNode;
+	private double sizeOfNode;
 	
-	public Node(String name, boolean isLeaf, Node fatherNode) {
+	public Node(String name, boolean isLeaf, Node fatherNode, double sizeOfNode) {
 		this.name = name;
 		nodeList = new ArrayList<>();
 		this.isLeaf = isLeaf;
 		this.fatherNode = fatherNode;
+		this.sizeOfNode = sizeOfNode;
 	}
 	
-	public static Node createNode(String name, boolean isLeaf, Node fatherNode){
-		return new Node(name, isLeaf, fatherNode);
+	public static Node createNode(String name, boolean isLeaf, Node fatherNode, double sizeOfNode){
+		return new Node(name, isLeaf, fatherNode, sizeOfNode);
 	}
 	
 	public boolean searchExtention(String extention){
@@ -47,6 +49,10 @@ public class Node {
 		return fatherNode;
 	}
 	
+
+	public double getSizeOfNode() {
+		return sizeOfNode;
+	}
 
 	public String getName() {
 		return name;
