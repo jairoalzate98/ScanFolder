@@ -19,7 +19,13 @@ public class Tree {
 			String name = files[i].getPath();
 			if (!files[i].isDirectory()) {
 				String extention = name.substring(name.lastIndexOf("."), name.length());
-				root.addNode(Node.createNode(extention, true, root));
+				if (root.searchExtention(extention)) {
+					
+				}else{
+					root.addNode(Node.createNode(extention, false, root));
+					Node a = root.getNodeByExtention(extention);
+					a.addNode(Node.createNode(name, true, a));
+				}
 			}else{
 				root.addNode(Node.createNode(name, false, root));
 			}
