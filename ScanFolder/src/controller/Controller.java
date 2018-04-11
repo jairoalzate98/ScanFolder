@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import models.Tree;
 import views.MainWindow;
@@ -28,6 +29,9 @@ public class Controller implements ActionListener{
 	private void selectFolder() {
 		try {
 			String pathFolder = mainWindow.setVisibleFileChooser();
+			File [] files = new File(pathFolder).listFiles();
+			tree.addRoot(pathFolder);
+			tree.addChildTree(files);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
