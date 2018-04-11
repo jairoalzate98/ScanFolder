@@ -35,5 +35,6 @@ public class Controller implements ActionListener{
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+		mainWindow.paintTree(tree.getRoot());
 	}
 }

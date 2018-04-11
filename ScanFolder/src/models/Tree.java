@@ -15,6 +15,14 @@ public class Tree {
 	}
 	
 	public void addChildTree(File[] files){
-		
+		for (int i = 0; i < files.length; i++) {
+			String name = files[i].getPath();
+			if (!files[i].isDirectory()) {
+				String extention = name.substring(name.lastIndexOf("."), name.length());
+				root.addNode(Node.createNode(extention, true, root));
+			}else{
+				root.addNode(Node.createNode(name, false, root));
+			}
+		}
 	}
 }

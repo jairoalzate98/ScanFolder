@@ -21,7 +21,9 @@ public class Node {
 	}
 	
 	public void addNode(Node node){
-		nodeList.add(node);
+		if (!isLeaf) {
+			nodeList.add(node);
+		}
 	}
 	
 	public Node getFatherNode(){
@@ -39,5 +41,10 @@ public class Node {
 
 	public boolean isLeaf() {
 		return isLeaf;
+	}
+	
+	@Override
+	public String toString() {
+		return name;
 	}
 }
